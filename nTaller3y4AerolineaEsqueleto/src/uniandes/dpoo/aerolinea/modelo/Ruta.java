@@ -8,11 +8,17 @@ public class Ruta
 	private String horaSalida;
 	private String horaLlegada;
 	private String codigoRuta;
+	private Aeropuerto destino;
+	private Aeropuerto origen;
 	
     // TODO completar
 	
 	public Ruta (Aeropuerto origen, Aeropuerto destino, String horaSalida, String horaLlegada, String codigoRuta) {
-		
+		this.horaSalida = horaSalida;
+		this.horaLlegada = horaLlegada;
+		this.codigoRuta = codigoRuta;
+		this.origen = origen;
+		this.destino = destino;
 	}
 
 	public String getCodigoRuta() {
@@ -20,11 +26,11 @@ public class Ruta
 	}
 	
 	public Aeropuerto getOrigen() {
-		return null;
+		return this.origen;
 	}
 	
 	public Aeropuerto getDestino() {
-		return null;
+		return this.destino;
 	}
 	
     public String getHoraSalida() {
@@ -36,6 +42,7 @@ public class Ruta
 	}
 	
 	public int getDuracion() {
+		
 		return 0;
 	}
 	

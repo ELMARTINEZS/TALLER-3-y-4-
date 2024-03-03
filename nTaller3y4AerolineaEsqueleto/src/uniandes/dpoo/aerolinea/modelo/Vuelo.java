@@ -1,6 +1,7 @@
 package uniandes.dpoo.aerolinea.modelo;
 
 import java.util.Collection;
+import java.util.*;
 
 import uniandes.dpoo.aerolinea.modelo.cliente.Cliente;
 import uniandes.dpoo.aerolinea.modelo.tarifas.CalculadoraTarifas;
@@ -8,13 +9,18 @@ import uniandes.dpoo.aerolinea.tiquetes.Tiquete;
 
 public class Vuelo {
 	private String fecha;
+	private Avion avion;
+	private Ruta ruta;
+	private Set<String> tiquetes = new HashSet<String>();;
 	
 	public Vuelo(Ruta ruta, String fecha, Avion avion) {
-		
+		this.ruta = ruta;
+		this.fecha = fecha;
+		this.avion = avion;
 	}
 	
 	public Ruta getRuta() {
-		return null;
+		return this.ruta;
 	}
 
 	public String getFecha() {
@@ -22,7 +28,7 @@ public class Vuelo {
 	}
 	
 	public Avion getAvion() {
-		return null;
+		return this.avion;
 	}
 	
 	public Collection <Tiquete> getTiquetes(){
