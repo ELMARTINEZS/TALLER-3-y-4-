@@ -3,6 +3,7 @@ package uniandes.dpoo.aerolinea.modelo;
 import java.util.Collection;
 import java.util.*;
 
+import uniandes.dpoo.aerolinea.exceptions.VueloSobrevendidoException;
 import uniandes.dpoo.aerolinea.modelo.cliente.Cliente;
 import uniandes.dpoo.aerolinea.modelo.tarifas.CalculadoraTarifas;
 import uniandes.dpoo.aerolinea.tiquetes.Tiquete;
@@ -11,7 +12,7 @@ public class Vuelo {
 	private String fecha;
 	private Avion avion;
 	private Ruta ruta;
-	private Set<String> tiquetes = new HashSet<String>();;
+	private Map<String,Tiquete> tiquetes = new HashMap<String,Tiquete>();
 	
 	public Vuelo(Ruta ruta, String fecha, Avion avion) {
 		this.ruta = ruta;
@@ -32,11 +33,18 @@ public class Vuelo {
 	}
 	
 	public Collection <Tiquete> getTiquetes(){
-		return null;
+		return this.tiquetes.values();
 	}
 	
-	public int venderTiquetes(Cliente cliente, CalculadoraTarifas calculadora, int cantidad) {
-		return 0;
+	public int venderTiquetes(Cliente cliente, CalculadoraTarifas calculadora, int cantidad) throws VueloSobrevendidoException{
+		if (cantidad < this.avion.getCapacidad()) {
+			throw new VueloSobrevendidoException(this);
+		}
+		else {
+			
+			return 0;
+		}
+		
 	}
 	
 	public boolean equals (Object obj) {

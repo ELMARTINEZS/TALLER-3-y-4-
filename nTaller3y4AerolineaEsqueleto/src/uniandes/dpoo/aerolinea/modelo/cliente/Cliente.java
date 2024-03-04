@@ -1,8 +1,13 @@
 package uniandes.dpoo.aerolinea.modelo.cliente;
+import java.util.*;
+
 import uniandes.dpoo.aerolinea.modelo.Vuelo;
 import uniandes.dpoo.aerolinea.tiquetes.Tiquete;
 
 public abstract class Cliente{
+	
+	private ArrayList<Tiquete> tiquetesUsados;
+	private ArrayList<Tiquete> tiquetesSinUsar;
 	
 	public Cliente() { 
 	}
@@ -12,10 +17,15 @@ public abstract class Cliente{
 	
 	public void agregarTiquete(Tiquete tiquete) {
 		// Toca implementar la funcion, pero por ahora apenas estamos realizando la estructura!!!
+		tiquetesSinUsar.add(tiquete);
 	}
 	
 	public int calcularValorTotalTiquetes() {
-		return 0;
+		int valorTotal = 0;
+		for (Tiquete a: tiquetesSinUsar) {
+			valorTotal+=a.getTarifa();
+		}
+		return valorTotal;
 	}
 	
 	public void usarTiquetes(Vuelo vuelo) {

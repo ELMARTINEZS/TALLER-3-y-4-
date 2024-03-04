@@ -1,7 +1,8 @@
 package uniandes.dpoo.aerolinea.modelo.tarifas;
 
+import uniandes.dpoo.aerolinea.modelo.*;
 import uniandes.dpoo.aerolinea.modelo.Vuelo;
-import uniandes.dpoo.aerolinea.modelo.cliente.Cliente;
+import uniandes.dpoo.aerolinea.modelo.cliente.*;
 
 public class CalculadorasTarifasTemporadaBaja extends CalculadoraTarifas {
 	protected final int COSTO_POR_KM_NATURAL = 600 ;
@@ -13,11 +14,17 @@ public class CalculadorasTarifasTemporadaBaja extends CalculadoraTarifas {
 	@Override
 	public int calcularCostoBase(Vuelo vuelo, Cliente cliente) {
 		// TODO Auto-generated method stub
+		Ruta ruta = vuelo.getRuta();
+		
+		Aeropuerto.calcularDistancia(ruta.getOrigen(), ruta.getDestino());
+		
 		return 0;
 	}
 	@Override
 	public double calcularPorcentajeDescuento(Cliente cliente) {
 		// TODO Auto-generated method stub
+
+		
 		return 0;
 	}
 	
