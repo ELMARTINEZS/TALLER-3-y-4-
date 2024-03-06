@@ -279,15 +279,7 @@ public class Aerolinea
      */
     public void programarVuelo( String fecha, String codigoRuta, String nombreAvion ) throws Exception
     {
-        // TODO Implementar el método
-    	for (Vuelo v: vuelos) {
-    		if (v.getFecha()==fecha) {
-    			Ruta ruta = v.getRuta();
-    			if (ruta.getCodigoRuta()==codigoRuta) {
-    				
-    			}
-    		}
-    	}
+
     }
 
     /**
