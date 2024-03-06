@@ -351,7 +351,7 @@ public class Aerolinea
 		tiquetesVuelo.addAll(vuelo.getTiquetes());
 		
 		for (Tiquete i : tiquetesVuelo) {
-			i.esUsado();
+			i.marcarComoUsado();
 		}
 		
     	vuelos.remove(vuelo);

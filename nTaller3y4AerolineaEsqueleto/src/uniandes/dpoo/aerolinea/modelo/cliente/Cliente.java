@@ -32,7 +32,7 @@ public abstract class Cliente{
 		tiquetesVuelo.addAll(vuelo.getTiquetes());
 		for (Tiquete t: tiquetesVuelo) {
 			if (tiquetesSinUsar.contains(t)) {
-				t.esUsado();
+				t.marcarComoUsado();
 				tiquetesSinUsar.remove(t);
 				tiquetesUsados.add(t);
 				
