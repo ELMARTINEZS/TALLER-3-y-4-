@@ -6,6 +6,7 @@ import java.util.*;
 import uniandes.dpoo.aerolinea.exceptions.VueloSobrevendidoException;
 import uniandes.dpoo.aerolinea.modelo.cliente.Cliente;
 import uniandes.dpoo.aerolinea.modelo.tarifas.CalculadoraTarifas;
+import uniandes.dpoo.aerolinea.tiquetes.GeneradorTiquetes;
 import uniandes.dpoo.aerolinea.tiquetes.Tiquete;
 
 public class Vuelo {
@@ -41,8 +42,16 @@ public class Vuelo {
 			throw new VueloSobrevendidoException(this);
 		}
 		else {
-			
-			return 0;
+			int i=0;
+			int valTotal = 0;
+			while (i<cantidad) {
+				int tarifa = calculadora.calcularTarifa(this, cliente);
+				Tiquete tiquete = GeneradorTiquetes.generarTiquete(this, cliente, tarifa);
+				this.tiquetes.put(tiquete.getCodigo(), tiquete);
+				cliente.agregarTiquete(tiquete);
+				valTotal += tarifa;
+			}
+			return valTotal;
 		}
 		
 	}

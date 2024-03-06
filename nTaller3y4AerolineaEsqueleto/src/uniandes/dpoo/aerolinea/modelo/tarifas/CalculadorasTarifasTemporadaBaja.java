@@ -14,16 +14,42 @@ public class CalculadorasTarifasTemporadaBaja extends CalculadoraTarifas {
 	@Override
 	public int calcularCostoBase(Vuelo vuelo, Cliente cliente) {
 		// TODO Auto-generated method stub
+		int costoBase = 0;
 		Ruta ruta = vuelo.getRuta();
 		
-		Aeropuerto.calcularDistancia(ruta.getOrigen(), ruta.getDestino());
+		int distancia = Aeropuerto.calcularDistancia(ruta.getOrigen(), ruta.getDestino());
 		
-		return 0;
+		if (cliente.getTipoCliente()=="Corporativo"){
+			costoBase = distancia * this.COSTO_POR_KM_CORPORATIVO;
+		}
+		
+		else {
+			costoBase = distancia * this.COSTO_POR_KM_NATURAL;
+		}
+		
+		return costoBase;
 	}
 	@Override
 	public double calcularPorcentajeDescuento(Cliente cliente) {
 		// TODO Auto-generated method stub
-
+		
+		if (cliente.getTipoCliente()=="Corporativo") {
+			String identificador = cliente.getIdentificador();
+			String[] parts = identificador.split("-");
+			String TAMAÑO = parts[3];
+			
+			if (TAMAÑO == "GRANDE"){
+				return this.DESCUENTOS_GRANDES;
+			}
+			
+			else if (TAMAÑO == "MEDIANA") {
+				return this.DESCUENTOS_MEDIANAS;
+			}
+			
+			else {
+				return this.DESCUENTO_PEQ;
+			}
+		}
 		
 		return 0;
 	}

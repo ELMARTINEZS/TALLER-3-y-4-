@@ -98,6 +98,7 @@ public class PersistenciaTiquetesJson implements IPersistenciaTiquetes
                 String nombre = cliente.getString( NOMBRE_CLIENTE );
                 nuevoCliente = new ClienteNatural( nombre );
             }
+            
             else
             {
                 // 2. En esta estrategia, en la clase ClienteCorporativo se realiza una parte de lo que tiene que ver con cargar objetos de la clase ClienteCorporativo.

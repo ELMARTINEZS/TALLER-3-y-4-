@@ -11,7 +11,12 @@ public abstract class CalculadoraTarifas{
 	public final double IMPUESTO = 0.28; 
 	
 	public int calcularTarifa (Vuelo vuelo, Cliente cliente) {
-		return 0;
+		int tarifa = 0;
+		int costoBase=calcularCostoBase(vuelo, cliente);
+		int impuestos = calcularValorImpuestos(costoBase);
+		double descuentos = calcularPorcentajeDescuento(cliente);
+		tarifa = (int) (costoBase*descuentos)+impuestos;
+		return tarifa;
 	}
 	
 	protected abstract int calcularCostoBase(Vuelo vuelo, Cliente cliente);

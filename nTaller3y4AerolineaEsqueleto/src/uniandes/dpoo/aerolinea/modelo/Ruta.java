@@ -43,7 +43,7 @@ public class Ruta
 	
 	public int getDuracion() {
 		
-		return 0;
+		return Integer.parseInt(horaLlegada)-Integer.parseInt(horaSalida);
 	}
 	
 

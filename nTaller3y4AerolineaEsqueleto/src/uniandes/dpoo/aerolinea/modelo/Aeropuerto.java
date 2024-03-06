@@ -3,7 +3,7 @@ package uniandes.dpoo.aerolinea.modelo;
 import java.util.HashSet;
 import java.util.Set;
 
-import uniandes.dpoo.aerolinea.exceptions.AeropuertoDuplicadoException;
+
 
 /**
  * Esta clase encapsula la información sobre los aeropuertos e implementa algunas operaciones relacionadas con la ubicación geográfica de los aeropuertos.

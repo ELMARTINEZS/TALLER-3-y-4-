@@ -16,7 +16,6 @@ public abstract class Cliente{
 	public abstract String getIdentificador();
 	
 	public void agregarTiquete(Tiquete tiquete) {
-		// Toca implementar la funcion, pero por ahora apenas estamos realizando la estructura!!!
 		tiquetesSinUsar.add(tiquete);
 	}
 	
@@ -29,6 +28,15 @@ public abstract class Cliente{
 	}
 	
 	public void usarTiquetes(Vuelo vuelo) {
+		LinkedList<Tiquete> tiquetesVuelo = new LinkedList<Tiquete>();
+		tiquetesVuelo.addAll(vuelo.getTiquetes());
+		for (Tiquete t: tiquetesVuelo) {
+			if (tiquetesUsados.contains(t)) {
+				tiquetesSinUsar.remove(t);
+				tiquetesUsados.add(t);
+				
+			}
+		}
 		
 	}
 	

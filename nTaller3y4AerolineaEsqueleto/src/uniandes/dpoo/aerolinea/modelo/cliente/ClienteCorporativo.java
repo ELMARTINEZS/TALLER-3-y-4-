@@ -38,7 +38,18 @@ public class ClienteCorporativo extends Cliente
 	@Override
 	public String getIdentificador() {
 		// TODO Auto-generated method stub
-		return null;
+		String identificador = this.nombreEmpresa+"-"+this.CORPORATIVO;
+		
+		if (this.tamanoEmpresa == 1){
+			identificador+="-GRANDE";
+		}
+		else if (this.tamanoEmpresa == 2) {
+			identificador+="-MEDIANA";
+		}
+		else {
+			identificador+="-PEQUEÑA";
+		}
+		return identificador;
 	}
 
     /**
