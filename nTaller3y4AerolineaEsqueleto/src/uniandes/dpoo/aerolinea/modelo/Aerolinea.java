@@ -347,6 +347,14 @@ public class Aerolinea
     {
         // TODO Implementar el método
     	Vuelo vuelo = getVuelo(codigoRuta, fecha);
+    	LinkedList<Tiquete> tiquetesVuelo = new LinkedList<Tiquete>();
+		tiquetesVuelo.addAll(vuelo.getTiquetes());
+		
+		for (Tiquete i : tiquetesVuelo) {
+			i.esUsado();
+		}
+		
+    	vuelos.remove(vuelo);
     }
 
     /**

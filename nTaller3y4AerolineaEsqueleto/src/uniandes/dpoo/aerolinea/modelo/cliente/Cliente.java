@@ -31,7 +31,8 @@ public abstract class Cliente{
 		LinkedList<Tiquete> tiquetesVuelo = new LinkedList<Tiquete>();
 		tiquetesVuelo.addAll(vuelo.getTiquetes());
 		for (Tiquete t: tiquetesVuelo) {
-			if (tiquetesUsados.contains(t)) {
+			if (tiquetesSinUsar.contains(t)) {
+				t.esUsado();
 				tiquetesSinUsar.remove(t);
 				tiquetesUsados.add(t);
 				
