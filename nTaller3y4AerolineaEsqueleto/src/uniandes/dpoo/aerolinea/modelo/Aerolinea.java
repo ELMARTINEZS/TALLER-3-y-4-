@@ -218,6 +218,8 @@ public class Aerolinea
     public void cargarAerolinea( String archivo, String tipoArchivo ) throws TipoInvalidoException, IOException, InformacionInconsistenteException
     {
         // TODO implementar
+    	IPersistenciaAerolinea cargador = CentralPersistencia.getPersistenciaAerolinea( tipoArchivo );
+        cargador.cargarAerolinea( archivo, this );
     }
 
     /**
@@ -230,6 +232,8 @@ public class Aerolinea
     public void salvarAerolinea( String archivo, String tipoArchivo ) throws TipoInvalidoException, IOException
     {
         // TODO implementar
+    	IPersistenciaAerolinea cargador = CentralPersistencia.getPersistenciaAerolinea( tipoArchivo );
+        cargador.cargarAerolinea( archivo, this );
     }
 
     /**
@@ -279,7 +283,30 @@ public class Aerolinea
      */
     public void programarVuelo( String fecha, String codigoRuta, String nombreAvion ) throws Exception
     {
-
+    	Ruta ruta = getRuta(codigoRuta);
+    	Avion avion = null;
+    	for(Vuelo v : vuelos) {
+    		Avion av = v.getAvion();
+    		if (av.getNombre() == nombreAvion) {
+    			avion = av;
+    		}
+    		int horaSal = Integer.parseInt(ruta.getHoraSalida());
+    		int horaLle = Integer.parseInt(ruta.getHoraLlegada()); //Tomamos un formato de 24H
+    		int horaSalVuelo = Integer.parseInt(v.getRuta().getHoraSalida());
+    		int horaLleVuelo = Integer.parseInt(v.getRuta().getHoraLlegada());
+    		
+    		if(v.getFecha()==fecha && nombreAvion == av.getNombre() && horaSalVuelo > horaSal  ) {
+    			throw new Exception("No es posible programar el vuelo");
+    		}
+    		else if(v.getFecha()==fecha && nombreAvion == av.getNombre() && horaLle < horaLleVuelo  ) {
+    			throw new Exception("No es posible programar el vuelo");
+    		}
+    		
+    		else {
+    			Vuelo vuelo = new Vuelo (ruta,fecha,avion);
+    			vuelos.add(vuelo);
+    		}
+    	}
     }
 
     /**
@@ -319,6 +346,7 @@ public class Aerolinea
     public void registrarVueloRealizado( String fecha, String codigoRuta )
     {
         // TODO Implementar el método
+    	Vuelo vuelo = getVuelo(codigoRuta, fecha);
     }
 
     /**
